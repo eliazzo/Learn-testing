@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learn Testing</title>
+  </head>
+  <body>
+    <h1>Open the console</h1>
+
+    <script>
+      // the function we're testing
+      function square(x) {
+        return x * x;
+      }
+
+      const a = square(2);
+      const b = 5;
+      // if (a !== b) {
+      //   console.error("broken");
+      // }
+
+      function equal(result, expected, message){
+        if (result === expected){
+          const defaultMess = `Expected ${expected} and received ${result}`;
+          console.info("Success: " + (message || defaultMess));
+        }
+        else {
+          const defaultMess = `Expected ${expected} and received ${result}`;
+          console.error("Broken: " + (message || defaultMess))
+        }
+      }
+
+      // equal(a,b)
+
+      // const notEqual = (answer, expected) => {
+      //   if (answer !== expected){
+      //     console.error(`failure: expected ${answer} but got ${expected}`);
+      //   }
+      // }
+
+      // let expected = square(3);
+      // let answer = 10;
+
+      // notEqual(answer, expected);
+
+      function test(name, testFunction){
+        console.group(name);
+        testFunction();
+        console.groupEnd();
+      };  
+
+
+      test("Check square function", () => {
+        const result = square(2);
+        const expected = 4;
+        equal(result, expected)
+      });
+
+      test("Check square function decimals", () => {
+        const result = square(3.5);
+        const expected = 12.5;
+        equal(result, expected)
+      })
+
+    </script>
+  </body>
+</html>
